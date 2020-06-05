@@ -18,7 +18,7 @@ void RandomMatrix( int, int, double *, int );
 
 /* Prototype for BLAS matrix-matrix multiplication routine (which we will 
    use for the reference implementation */
-void dgemm_( char *, char *,                 // transA, transB
+void dgemm_( char *, char *,           // transA, transB
 	     int *, int *, int *,            // m, n, k
 	     double *, double *, int *,      // alpha, A, ldA
 	               double *, int *,      //        B, ldB
@@ -182,6 +182,6 @@ int main(int argc, char *argv[])
   }
   printf( "];\n\n" );
   printf( "%% Maximum difference between reference and your implementation: %le.\n", maxdiff );
-  
+
   exit( 0 );
 }

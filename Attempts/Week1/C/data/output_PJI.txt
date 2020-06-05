@@ -1,0 +1,24 @@
+first: 48	last: 480	inc: 48
+
+LAPACK   ==> size:   480	Time (ms): 4.4470e-03	GFLOPS/sec: 4.9738e+01
+C NATIVE ==> size:   480	Time (ms): 2.5186e-02	GFLOPS/sec: 8.7819e+00	diff: 3.5527e-13
+LAPACK   ==> size:   432	Time (ms): 3.0279e-03	GFLOPS/sec: 5.3252e+01
+C NATIVE ==> size:   432	Time (ms): 1.7828e-02	GFLOPS/sec: 9.0445e+00	diff: 3.1264e-13
+LAPACK   ==> size:   384	Time (ms): 2.0770e-03	GFLOPS/sec: 5.4524e+01
+C NATIVE ==> size:   384	Time (ms): 1.2782e-02	GFLOPS/sec: 8.8597e+00	diff: 1.9895e-13
+LAPACK   ==> size:   336	Time (ms): 1.3965e-03	GFLOPS/sec: 5.4326e+01
+C NATIVE ==> size:   336	Time (ms): 8.4383e-03	GFLOPS/sec: 8.9907e+00	diff: 1.7053e-13
+LAPACK   ==> size:   288	Time (ms): 9.2420e-04	GFLOPS/sec: 5.1694e+01
+C NATIVE ==> size:   288	Time (ms): 5.3277e-03	GFLOPS/sec: 8.9674e+00	diff: 1.1369e-13
+LAPACK   ==> size:   240	Time (ms): 5.2780e-04	GFLOPS/sec: 5.2383e+01
+C NATIVE ==> size:   240	Time (ms): 3.0731e-03	GFLOPS/sec: 8.9968e+00	diff: 4.2633e-14
+LAPACK   ==> size:   192	Time (ms): 2.7370e-04	GFLOPS/sec: 5.1720e+01
+C NATIVE ==> size:   192	Time (ms): 1.5068e-03	GFLOPS/sec: 9.3946e+00	diff: 2.8422e-14
+LAPACK   ==> size:   144	Time (ms): 1.2350e-04	GFLOPS/sec: 4.8356e+01
+C NATIVE ==> size:   144	Time (ms): 5.7230e-04	GFLOPS/sec: 1.0435e+01	diff: 2.8422e-14
+LAPACK   ==> size:    96	Time (ms): 4.4100e-05	GFLOPS/sec: 4.0124e+01
+C NATIVE ==> size:    96	Time (ms): 1.8220e-04	GFLOPS/sec: 9.7117e+00	diff: 1.4211e-14
+LAPACK   ==> size:    48	Time (ms): 1.0700e-05	GFLOPS/sec: 2.0671e+01
+C NATIVE ==> size:    48	Time (ms): 3.4300e-05	GFLOPS/sec: 6.4485e+00	diff: 7.1054e-15
+
+% Maximum difference between reference and your implementation: 3.552714e-13.

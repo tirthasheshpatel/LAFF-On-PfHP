@@ -15,7 +15,7 @@ double MaxAbsDiff( int m, int n, double *ap, int lda, double *bp, int ldb )
   for ( i=0; i<m; i++ )
     for ( j=0; j<n; j++ )
       if ( dabs( A( i,j ) - B( i,j ) ) > diff ) 
-	  diff = dabs( A( i,j ) - B( i,j ) );
+	      diff = dabs( A( i,j ) - B( i,j ) );
 
   return diff;
 }

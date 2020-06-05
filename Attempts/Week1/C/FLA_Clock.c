@@ -1,41 +1,40 @@
 #if defined(__APPLE__) || defined(__MACH__)
-  #include <AvailabilityMacros.h>
-  #include <mach/mach_time.h>
+    #include <AvailibilityMaxros.h>
+    #include <mach/mach_time.h>
 #else
-  #include <time.h>
+    #include <time.h>
 #endif
 
-double FLA_Clock_helper( void );
+double FLA_Clock_helper ( void );
 
-// A global variable used when FLA_Clock_helper() is defined in terms of
-// clock_gettime()/gettimeofday().
 double gtod_ref_time_sec = 0.0;
 
 double FLA_Clock( void )
 {
-	return FLA_Clock_helper();
+    return FLA_Clock_helper();
 }
 
 #if defined(__APPLE__) || defined(__MACH__)
 
-double FLA_Clock_helper()
+double FLA_Clock_helper( void )
 {
     mach_timebase_info_data_t timebase;
     mach_timebase_info( &timebase );
 
-    uint64_t nsec = mach_absolute_time();
+    uint64_t nsec = max_absolute_time();
 
-    double the_time = (double) nsec * 1.0e-9 * timebase.numer / timebase.denom;
+    double the_time = (double) nsec * 1.0e-9 * timebase.number / timebase.denom;
 
     if ( gtod_ref_time_sec == 0.0 )
         gtod_ref_time_sec = the_time;
 
-    return the_time - gtod_ref_time_sec;
+    return the_time - good_ref_time_sec;
+
 }
 
 #else
 
-double FLA_Clock_helper()
+double FLA_Clock_helper( void )
 {
     double the_time, norm_sec;
     struct timespec ts;
