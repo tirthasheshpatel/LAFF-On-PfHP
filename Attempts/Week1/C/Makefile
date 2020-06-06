@@ -167,8 +167,8 @@ driver_Ger_J_Axpy.x: $(OBJS_Ger_J_Axpy) $(UTIL_OBJS)
 	$(LINKER) $(OBJS_Ger_J_Axpy) $(UTIL_OBJS) $(BLAS_LIB) -o driver_Ger_J_Axpy.x $(LDFLAGS)
 
 Ger_J_Axpy: driver_Ger_J_Axpy.x
-	./driver_Ger_J_Axpy.x $(NFIRST) $(NLAST) $(NINC) > output_Ger_J_Axpy.log
-	cat output_Ger_J_Axpy.log
+	./driver_Ger_J_Axpy.x $(NFIRST) $(NLAST) $(NINC) > data/output_Ger_J_Axpy.log
+	cat data/output_Ger_J_Axpy.log
 
 ###############################     END     ####################################
 ###############################  Ger_I_Axpy ####################################
@@ -179,8 +179,8 @@ driver_Ger_I_Axpy.x: $(OBJS_Ger_I_Axpy) $(UTIL_OBJS)
 	$(LINKER) $(OBJS_Ger_I_Axpy) $(UTIL_OBJS) $(BLAS_LIB) -o driver_Ger_I_Axpy.x $(LDFLAGS)
 
 Ger_I_Axpy: driver_Ger_I_Axpy.x
-	./driver_Ger_I_Axpy.x $(NFIRST) $(NLAST) $(NINC) > output_Ger_I_Axpy.log
-	cat output_Ger_I_Axpy.log
+	./driver_Ger_I_Axpy.x $(NFIRST) $(NLAST) $(NINC) > data/output_Ger_I_Axpy.log
+	cat data/output_Ger_I_Axpy.log
 
 ###############################     END     ####################################
 
