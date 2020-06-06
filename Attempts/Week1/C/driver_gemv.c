@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 
     double
         d_one = 1,
-        diff, maxdiff;
+        diff, maxdiff = 0.0;
 
     double
         *A, *x, *y,
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 
     printf("\n");
 
-    for( size=last ; size > first ; size-=inc ) {
+    for( size=last ; size>=first ; size-=inc ) {
         m = n = size;
         lda = size;
 
