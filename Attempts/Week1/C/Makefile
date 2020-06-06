@@ -101,6 +101,30 @@ ALL_ORDERINGS:
 	make clean
 
 ###############################     END     ####################################
+############################### Gemv -> I_Dots #################################
+
+OBJS_I_Dots := driver_gemv.o Dots.o Gemv_I_Dots.o
+
+driver_I_Dots.x: $(OBJS_I_Dots) $(UTIL_OBJS)
+	$(LINKER) $(OBJS_I_Dots) $(UTIL_OBJS) $(BLAS_LIB) -o driver_I_Dots.x $(LDFLAGS)
+
+I_Dots: driver_I_Dots.x
+	./driver_I_Dots.x $(NFIRST) $(NLAST_SMALL) $(NINC) > data/output_I_Dots.txt
+	cat data/output_I_Dots.txt
+
+###############################     END     ####################################
+############################### Gemv -> J_Axpy #################################
+
+OBJS_J_Axpy := driver_gemv.o Axpy.o Gemv_J_Axpy.o
+
+driver_J_Axpy.x: $(OBJS_J_Axpy) $(UTIL_OBJS)
+	$(LINKER) $(OBJS_J_Axpy) $(UTIL_OBJS) $(BLAS_LIB) -o driver_J_Axpy.x $(LDFLAGS)
+
+J_Axpy: driver_J_Axpy.x
+	./driver_J_Axpy.x $(NFIRST) $(NLAST_SMALL) $(NINC) > data/output_J_Axpy.txt
+	cat data/output_J_Axpy.txt
+
+###############################     END     ####################################
 
 # clean everything
 clean:

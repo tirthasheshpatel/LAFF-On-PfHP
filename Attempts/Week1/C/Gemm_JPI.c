@@ -3,9 +3,9 @@
 #define gamma( i,j ) C[ (j)*ldc + (i) ]
 
 void MyGemm(int m, int n, int k,
-            double *A, int lda,
-            double *B, int ldb,
-            double *C, int ldc)
+            const double *A, int lda,
+            const double *B, int ldb,
+                  double *C, int ldc)
 {
     int j, p, i;
 

@@ -27,10 +27,10 @@ void RandomMatrix(int, int, double *, int);
  * done in different forms. All the functions must have same
  * signature which is (m, n, k, ap, lda, bp, ldb, cp, ldc)
  */
-void MyGemm(int, int, int,                // m, n, k
-            double *, int,                // A, ldA
-            double *, int,                // B, ldB
-            double *, int);               // C, ldc
+void MyGemm(int, int, int,                      // m, n, k
+            const double *, int,                // A, ldA
+            const double *, int,                // B, ldB
+                  double *, int);               // C, ldc
 
 /**
  * BLAS/LAPACK implementation of the routine. This is the refernce

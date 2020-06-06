@@ -7,6 +7,6 @@ void Dots( int, const double *, int, const double *, int, double * );
 void MyGemv( int m, int n, double *A, int ldA,
            double *x, int incx, double *y, int incy )
 {
-  for ( int i=0; i<m; i++ )
-    Dots(  ,     ,     ,     ,       ,      );
+  for( int i=0; i<m; i++ )
+    Dots( n, &A[i], ldA, x, incx, &psi( i ) );
 }

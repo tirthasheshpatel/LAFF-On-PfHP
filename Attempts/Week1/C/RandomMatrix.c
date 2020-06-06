@@ -3,7 +3,7 @@
 
 #define A( i, j ) *( ap + (j)*lda + (i) ) // march through the matrix in F_CONTIGUOUS (column-major) manner
 
-void RandomMatrix(size_t m, size_t n, double *ap, size_t lda)
+void RandomMatrix(int m, int n, double *ap, int lda)
 /**
  * Overwrites `ap` with random numbers in the range [0, 1)
  * 
@@ -15,7 +15,7 @@ void RandomMatrix(size_t m, size_t n, double *ap, size_t lda)
  * @returns void
  */
 {
-    size_t i, j;
+    int i, j;
     for ( i=0 ; i<m ; i++ )
         for ( j=0 ; j<n ; j++ )
             A( i, j ) = drand48();
