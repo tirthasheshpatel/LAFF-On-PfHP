@@ -31,9 +31,44 @@ benchmark_level_1_BLAS_copy: driver_level_1_BLAS.x
 	python3 plotter.py "level_1_BLAS_copy"
 	make clean
 
+# Benchmark BLAS 'scal' operation.
+benchmark_level_1_BLAS_scal: driver_level_1_BLAS.x
+	./driver_level_1_BLAS.x scal $(NREPEATS) 1000 5000 50 > out/level_1_BLAS_scal_output.csv
+	python3 plotter.py "level_1_BLAS_scal"
+	make clean
+
+# Benchmark BLAS 'axpy' operation.
+benchmark_level_1_BLAS_axpy: driver_level_1_BLAS.x
+	./driver_level_1_BLAS.x axpy $(NREPEATS) 1000 5000 50 > out/level_1_BLAS_axpy_output.csv
+	python3 plotter.py "level_1_BLAS_axpy"
+	make clean
+
+# Benchmark BLAS 'dot' operation.
+benchmark_level_1_BLAS_dot: driver_level_1_BLAS.x
+	./driver_level_1_BLAS.x dot $(NREPEATS) 1000 5000 50 > out/level_1_BLAS_dot_output.csv
+	python3 plotter.py "level_1_BLAS_dot"
+	make clean
+
+# Benchmark BLAS 'nrm2' operation.
+benchmark_level_1_BLAS_nrm2: driver_level_1_BLAS.x
+	./driver_level_1_BLAS.x nrm2 $(NREPEATS) 1000 5000 50 > out/level_1_BLAS_nrm2_output.csv
+	python3 plotter.py "level_1_BLAS_nrm2"
+	make clean
+
+# Benchmark BLAS 'asum' operation.
+benchmark_level_1_BLAS_asum: driver_level_1_BLAS.x
+	./driver_level_1_BLAS.x asum $(NREPEATS) 1000 5000 50 > out/level_1_BLAS_asum_output.csv
+	python3 plotter.py "level_1_BLAS_asum"
+	make clean
+
 # benchmark all the Level-1 BLAS operations.
 benchmark_level_1_BLAS:
 	make benchmark_level_1_BLAS_copy
+	make benchmark_level_1_BLAS_scal
+	make benchmark_level_1_BLAS_axpy
+	make benchmark_level_1_BLAS_dot
+	make benchmark_level_1_BLAS_nrm2
+	make benchmark_level_1_BLAS_asum
 
 # clean everything.
 clean:
