@@ -183,11 +183,46 @@ Ger_I_Axpy: driver_Ger_I_Axpy.x
 	cat data/output_Ger_I_Axpy.log
 
 ###############################     END     ####################################
+############################### P_Ger_I_Axpy ###################################
+
+OBJS_P_Ger_I_Axpy := driver.o Gemm_P_Ger.o Ger_I_Axpy.o Axpy.o
+
+driver_P_Ger_I_Axpy.x: $(OBJS_P_Ger_I_Axpy) $(UTIL_OBJS)
+	$(LINKER) $(OBJS_P_Ger_I_Axpy) $(UTIL_OBJS) $(BLAS_LIB) -o driver_P_Ger_I_Axpy.x $(LDFLAGS)
+
+P_Ger_I_Axpy: driver_P_Ger_I_Axpy.x
+	./driver_P_Ger_I_Axpy.x $(NREPEATS) $(NFIRST) $(NLAST_SMALL) $(NINC) > data/output_P_Ger_I_Axpy.log
+	cat data/output_P_Ger_I_Axpy.log
+
+###############################     END     ####################################
+############################### P_Ger_J_Axpy ###################################
+
+OBJS_P_Ger_J_Axpy := driver.o Gemm_P_Ger.o Ger_J_Axpy.o Axpy.o
+
+driver_P_Ger_J_Axpy.x: $(OBJS_P_Ger_J_Axpy) $(UTIL_OBJS)
+	$(LINKER) $(OBJS_P_Ger_J_Axpy) $(UTIL_OBJS) $(BLAS_LIB) -o driver_P_Ger_J_Axpy.x $(LDFLAGS)
+
+P_Ger_J_Axpy: driver_P_Ger_J_Axpy.x
+	./driver_P_Ger_J_Axpy.x $(NREPEATS) $(NFIRST) $(NLAST_SMALL) $(NINC) > data/output_P_Ger_J_Axpy.log
+	cat data/output_P_Ger_J_Axpy.log
+
+###############################     END     ####################################
+###############################   Outer_P   ####################################
+
+OUTER_P:
+	make P_Ger_I_Axpy
+	make P_Ger_J_Axpy
+	make PIJ
+	make PJI
+	make clean
+
+###############################     END     ####################################
 
 
 all:
 	make ALL_ORDERINGS
 	make OUTER_J
+	make OUTER_P
 	make I_Dots
 	make J_Axpy
 	make Ger_J_Axpy

@@ -1,6 +1,6 @@
 #define alpha( i,j ) A[ (j)*lda + (i) ]
-#define   chi( i ) x[ (i)*incx ]
-#define   psi( i ) y[ (i)*incy ]
+#define     chi( i ) x[ (i)*incx ]
+#define     psi( i ) y[ (i)*incy ]
 
 void Axpy(int, double,
           double *, int,
