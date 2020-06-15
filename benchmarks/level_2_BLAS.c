@@ -255,7 +255,7 @@ int main(int argc, char *argv[])
 
          for( i=0 ; i<nrep ; i++ ) {
             RandomMatrix(n, 1, x,   n);
-            RandomMatrix(m, n, A, ldA);
+               RandomSym(m,    A, ldA);
 
             dtime = FLA_Clock();
 
@@ -285,7 +285,7 @@ int main(int argc, char *argv[])
          for( i=0 ; i<nrep ; i++ ) {
             RandomMatrix(n, 1, x,   n);
             RandomMatrix(m, 1, y,   m);
-              RandomTril(m, A, ldA);
+               RandomSym(m,    A, ldA);
 
             dtime = FLA_Clock();
 
