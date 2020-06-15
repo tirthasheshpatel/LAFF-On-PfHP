@@ -51,6 +51,7 @@ int main(int argc, char *argv[])
 
    double
       dtime, dtime_best,
+      gflops = 0.0,
       d_one = 1.0;
 
    double
@@ -67,7 +68,7 @@ int main(int argc, char *argv[])
 
    // printf("\nfirst: %5d\tlast: %5d\tinc: %5d\n", first, last, inc);
 
-   printf("size, time(ms)\n");
+   printf("size, time(ms), GFLOPs/s\n");
 
    if( strcmp( "copy", argv[1] ) == 0 ) {
       /* Benchmark dcopy operation. */
@@ -89,7 +90,7 @@ int main(int argc, char *argv[])
             else if( dtime < dtime_best ) dtime_best = dtime;
          }
 
-         fprintf(stdout, "%5d, %8.4le\n", size, dtime_best);
+         fprintf(stdout, "%5d, %8.4le, %8.4le\n", size, dtime_best, gflops);
 
          free(x);
          free(y);
@@ -103,20 +104,23 @@ int main(int argc, char *argv[])
          m = size;
 
          x = ( double * ) malloc( m * 1 * sizeof( double ) );
-         y = ( double * ) malloc( m * 1 * sizeof( double ) );
 
-         RandomMatrix(m, 1, x, m);
+         for( i=0 ; i<nrep ; i++ ) {
+            RandomMatrix(m, 1, x, m);
+            dtime = FLA_Clock();
 
-         dtime = FLA_Clock();
+            dscal_(&m, &d_one, x, &i_one);
 
-         dscal_(&m, &d_one, x, &i_one);
+            dtime = FLA_Clock() - dtime;
+            if( i == 0 )                  dtime_best = dtime;
+            else if( dtime < dtime_best ) dtime_best = dtime;
+         }
 
-         dtime = FLA_Clock() - dtime;
+         gflops = m / dtime_best * 10e-9;
 
-         fprintf(stdout, "%5d, %8.4le\n", size, dtime);
+         fprintf(stdout, "%5d, %8.4le, %8.4le\n", size, dtime_best, gflops);
 
          free(x);
-         free(y);
       }
    }
    else if( strcmp( "axpy", argv[1] ) == 0 ) {
@@ -139,7 +143,9 @@ int main(int argc, char *argv[])
             else if( dtime < dtime_best ) dtime_best = dtime;
          }
 
-         fprintf(stdout, "%5d, %8.4le\n", size, dtime_best);
+         gflops = (2*m) / dtime_best * 10e-9;
+
+         fprintf(stdout, "%5d, %8.4le, %8.4le\n", size, dtime_best, gflops);
 
          free(x);
          free(y);
@@ -165,7 +171,13 @@ int main(int argc, char *argv[])
             else if( dtime < dtime_best ) dtime_best = dtime;
          }
 
-         fprintf(stdout, "%5d, %8.4le\n", size, dtime_best);
+         /* FORTRAN code for this op. It does a total of 2 * m flops
+         DO i = 1,m
+                  dtemp = dtemp + dx(i)*dy(i)
+         END DO */
+         gflops = (2*m) / dtime_best * 10e-9;
+
+         fprintf(stdout, "%5d, %8.4le, %8.4le\n", size, dtime_best, gflops);
 
          free(x);
          free(y);
@@ -191,7 +203,9 @@ int main(int argc, char *argv[])
             else if( dtime < dtime_best ) dtime_best = dtime;
          }
 
-         fprintf(stdout, "%5d, %8.4le\n", size, dtime_best);
+         gflops = (2*m) / dtime_best * 10e-9;
+
+         fprintf(stdout, "%5d, %8.4le, %8.4le\n", size, dtime_best, gflops);
 
          free(x);
          free(y);
@@ -217,7 +231,9 @@ int main(int argc, char *argv[])
             else if( dtime < dtime_best ) dtime_best = dtime;
          }
 
-         fprintf(stdout, "%5d, %8.4le\n", size, dtime_best);
+         gflops = (2*m) / dtime_best * 10e-9;
+
+         fprintf(stdout, "%5d, %8.4le, %8.4le\n", size, dtime_best, gflops);
 
          free(x);
          free(y);
