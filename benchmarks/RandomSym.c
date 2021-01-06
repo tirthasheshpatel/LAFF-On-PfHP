@@ -9,7 +9,7 @@ void RandomSym(int m, double *A, int ldA)
     for( i=0 ; i<m ; i++ ) {
         for( j=0 ; j<=i ; j++ ) {
             alpha( i,j ) = drand48();
-            alpha( j,i ) = drand48();
+            alpha( j,i ) = alpha( i,j );
         }
     }
 }

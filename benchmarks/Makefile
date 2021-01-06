@@ -1,5 +1,3 @@
-# HOME      := /Users/rvdg
-
 # Make sure you have BLIS installed in your home directory (or some other BLAS library).
 BLAS_LIB  := $(HOME)/blis/lib/libblis.a
 BLAS_INC  := $(HOME)/blis/include/blis
@@ -21,6 +19,11 @@ LDFLAGS    := -lpthread -m64 -lm -fopenmp
 
 UTIL_OBJS_LEVEL_1  := FLA_Clock.o RandomMatrix.o
 UTIL_OBJS_LEVEL_2  := FLA_Clock.o RandomMatrix.o RandomTril.o RandomSym.o
+
+# benchmark all the BLAS operations.
+all:
+	make benchmark_level_1_BLAS
+	make benchmark_level_2_BLAS
 
 # compile the level-1 driver.
 driver_level_1_BLAS.x: level_1_BLAS.o $(UTIL_OBJS_LEVEL_1)
