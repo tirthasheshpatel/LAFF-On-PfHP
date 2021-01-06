@@ -2,3 +2,5 @@
 *.o
 *.x
 *.log
+benchmarks/out/
+benchmarks/plots/
